@@ -1,10 +1,10 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import LinkButton from "@material-ui/core/Link";
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
 import Logo from "../../components/Logo";
 import useStyles from "./styles";
 
@@ -64,10 +64,10 @@ export default function Signup() {
             </Button>
           </Box>
 
-          <Link to="/">
-            <LinkButton href="/" variant="body2">
-              {"Já tem conta? Faça Login"}
-            </LinkButton>
+          <Link to="/cadastrar">
+            <Typography variant="body2" color="primary">
+              {"Não tem conta? Faça um cadastro"}
+            </Typography>
           </Link>
         </form>
       </Box>

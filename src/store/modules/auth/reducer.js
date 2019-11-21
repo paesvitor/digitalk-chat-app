@@ -1,9 +1,9 @@
 import * as TYPES from "./types";
 
 const initialState = {
-  loading: true,
+  loading: false,
   payload: {},
-  error: false,
+  error: null,
   authenticated: false
 };
 
@@ -12,14 +12,13 @@ export default (state = initialState, action) => {
     case TYPES.signin.REQUEST: {
       return {
         ...state,
-        loading: true,
-        error: true
+        loading: true
       };
     }
     case TYPES.signin.SUCCESS: {
       return {
         ...state,
-        payload: action.payload,
+        ...action.payload,
         loading: false
       };
     }
@@ -28,7 +27,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: true
+        error: action.payload
       };
     }
 
