@@ -1,9 +1,28 @@
 import io from "socket.io-client";
 
-const socket = io(
-  process.env.REACT_APP_ENV === "development"
-    ? `http://localhost:3000`
-    : `http://localhost:3000`
-);
+export default function() {
+  const socket = io.connect("http://localhost:3000");
 
-export default socket;
+  function registerHandler(onMessageReceived) {
+    socket.on("message", onMessageReceived);
+  }
+
+  function unregisterHandler() {
+    socket.off("message");
+  }
+
+  function join() {
+    socket.connect();
+  }
+
+  function leave() {
+    socket.disconnect();
+  }
+
+  return {
+    join,
+    leave,
+    registerHandler,
+    unregisterHandler
+  };
+}

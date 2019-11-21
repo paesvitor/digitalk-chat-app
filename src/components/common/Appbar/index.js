@@ -7,12 +7,14 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { useDispatch } from "react-redux";
+import { useStyles } from "./styles";
 import { authSignoutRequest } from "store/modules/auth/actions";
 
 export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   function _handleMenu(event) {
     setAnchorEl(event.currentTarget);
@@ -29,10 +31,11 @@ export default function MenuAppBar() {
   return (
     <AppBar position="relative">
       <Toolbar>
-        <Typography variant="h6">Chat</Typography>
+        <Typography className={classes.title} variant="h6">
+          digitalk
+        </Typography>
         <div>
           <IconButton
-            aria-label="account of current user"
             aria-controls="menu-appbar"
             aria-haspopup="true"
             onClick={_handleMenu}

@@ -5,7 +5,6 @@ import {
   chatIndexRequest,
   chatStoreSuccess
 } from "store/modules/chat/actions";
-import { Box } from "@material-ui/core";
 import { useStyles } from "./styles";
 import socket from "utils/socket";
 import Message from "components/chat/Message";
@@ -17,6 +16,7 @@ function Chat() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const messagesEndRef = useRef();
+  const client = socket();
 
   function _handleMessage(message) {
     message.user._id !== userId && dispatch(chatStoreSuccess(message));
@@ -34,11 +34,15 @@ function Chat() {
     _scrollToBottom();
   }, [chat.payload]);
 
-  useMemo(() => {
+  useEffect(() => {
     dispatch(chatIndexRequest());
+    client.join();
+    client.registerHandler(_handleMessage);
 
-    socket.on("message", _handleMessage);
-  }, [dispatch]);
+    return () => {
+      client.leave();
+    };
+  }, []);
 
   return (
     <section className={classes.container}>
