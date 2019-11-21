@@ -2,13 +2,20 @@ import * as TYPES from "./types";
 
 const initialState = {
   loading: true,
-  payload: [],
+  payload: {},
   error: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case TYPES.getAllCategories.SUCCESS: {
+    case TYPES.signin.REQUEST: {
+      return {
+        ...state,
+        loading: true,
+        error: true
+      };
+    }
+    case TYPES.signin.SUCCESS: {
       return {
         ...state,
         payload: action.payload,
@@ -16,7 +23,7 @@ export default (state = initialState, action) => {
       };
     }
 
-    case TYPES.getAllCategories.FAILURE: {
+    case TYPES.signin.FAILURE: {
       return {
         ...state,
         loading: false,
