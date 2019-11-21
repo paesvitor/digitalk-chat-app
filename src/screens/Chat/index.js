@@ -7,6 +7,7 @@ import {
 } from "store/modules/chat/actions";
 import { Box } from "@material-ui/core";
 import socket from "utils/socket";
+import Message from "components/chat/Message";
 
 function Chat() {
   const chat = useSelector(state => state.chat);
@@ -32,12 +33,15 @@ function Chat() {
 
   return (
     <Box display="flex" flexDirection="column" flex="1">
-      <Box style={{ flex: 1, overflowY: "scroll" }}>
+      <Box
+        p={3}
+        flex="1"
+        overflow="scroll"
+        display="flex"
+        flexDirection="column"
+      >
         {chat.payload.map(message => (
-          <div key={message._id}>
-            <div>{message.text}</div>
-            <div>{message.user.username}</div>
-          </div>
+          <Message message={message} key={message._id} />
         ))}
       </Box>
 
