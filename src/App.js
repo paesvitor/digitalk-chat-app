@@ -2,6 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import store from "./store";
 import Router from "./router";
+import "./resources/styles/global.css";
 
 function App() {
   return (
