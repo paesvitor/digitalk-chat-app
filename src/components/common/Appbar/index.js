@@ -6,18 +6,25 @@ import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import { useDispatch } from "react-redux";
+import { authSignoutRequest } from "../../../store/modules/auth/actions";
 
 export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
 
-  const handleMenu = event => {
+  function _handleMenu(event) {
     setAnchorEl(event.currentTarget);
-  };
+  }
 
-  const handleClose = () => {
+  function _handleClose() {
     setAnchorEl(null);
-  };
+  }
+
+  function _handleSignout() {
+    dispatch(authSignoutRequest());
+  }
 
   return (
     <AppBar position="relative">
@@ -28,7 +35,7 @@ export default function MenuAppBar() {
             aria-label="account of current user"
             aria-controls="menu-appbar"
             aria-haspopup="true"
-            onClick={handleMenu}
+            onClick={_handleMenu}
             color="inherit"
           >
             <AccountCircle />
@@ -46,10 +53,10 @@ export default function MenuAppBar() {
               horizontal: "right"
             }}
             open={open}
-            onClose={handleClose}
+            onClose={_handleClose}
           >
-            <MenuItem onClick={handleClose}>Meu Perfil</MenuItem>
-            <MenuItem onClick={handleClose}>Sair</MenuItem>
+            <MenuItem onClick={_handleClose}>Meu Perfil</MenuItem>
+            <MenuItem onClick={_handleSignout}>Sair</MenuItem>
           </Menu>
         </div>
       </Toolbar>

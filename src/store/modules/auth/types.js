@@ -1,5 +1,11 @@
 export const signin = {
-  REQUEST: "auth_signin/REQUEST",
-  SUCCESS: "auth_signin/SUCCESS",
-  FAILURE: "auth_signin/FAILURE"
+  REQUEST: "AUTH/signin/REQUEST",
+  SUCCESS: "AUTH/signin/SUCCESS",
+  FAILURE: "AUTH/signin/FAILURE"
+};
+
+export const signout = {
+  REQUEST: "AUTH/signout/REQUEST",
+  SUCCESS: "AUTH/signout/SUCCESS",
+  FAILURE: "AUTH/signout/FAILURE"
 };

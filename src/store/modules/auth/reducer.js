@@ -36,6 +36,15 @@ export default (state = initialState, action) => {
       };
     }
 
+    case TYPES.signout.REQUEST: {
+      return {
+        ...state,
+        loading: false,
+        authenticated: false,
+        user: {}
+      };
+    }
+
     default:
       return state;
   }

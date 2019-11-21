@@ -6,7 +6,7 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Logo from "../../components/common/Logo";
 import useStyles from "./styles";
-import { signinRequest } from "../../store/modules/auth/actions";
+import { authSigninRequest } from "../../store/modules/auth/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
@@ -22,7 +22,7 @@ export default function Signin() {
 
   function _handleSignin(e) {
     e.preventDefault();
-    dispatch(signinRequest(username, password, passwordConfirm));
+    dispatch(authSigninRequest(username, password, passwordConfirm));
   }
 
   useEffect(() => {

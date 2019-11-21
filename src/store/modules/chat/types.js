@@ -1,11 +1,11 @@
 export const index = {
-  REQUEST: "chat_index/REQUEST",
-  SUCCESS: "chat_index/SUCCESS",
-  FAILURE: "chat_index/FAILURE"
+  REQUEST: "CHAT/index/REQUEST",
+  SUCCESS: "CHAT/index/SUCCESS",
+  FAILURE: "CHAT/index/FAILURE"
 };
 
 export const store = {
-  REQUEST: "chat_store/REQUEST",
-  SUCCESS: "chat_store/SUCCESS",
-  FAILURE: "chat_store/FAILURE"
+  REQUEST: "CHAT/store/REQUEST",
+  SUCCESS: "CHAT/store/SUCCESS",
+  FAILURE: "CHAT/store/FAILURE"
 };
