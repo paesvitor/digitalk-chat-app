@@ -3,10 +3,12 @@ import { call, takeLeading, put } from "redux-saga/effects";
 import http from "../../../utils/http";
 
 function* signinRequestSaga({ payload }) {
-  console.log(payload);
-  try {
-    const response = yield call(http.post, "/auth/signin", payload);
+  let signType = "signin";
 
+  payload.confirmPassword && (signType = "signup");
+
+  try {
+    const response = yield call(http.post, `/auth/${signType}`, payload);
     yield put({
       type: TYPES.signin.SUCCESS,
       payload: response.data

@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
 import Logo from "../../components/Logo";
 import useStyles from "./styles";
+import { signinRequest } from "../../store/modules/auth/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { Typography } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
-export default function Signup() {
+export default function Signin() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const auth = useSelector(state => state.auth);
+  const history = useHistory();
+
+  function _handleSignin(e) {
+    e.preventDefault();
+    dispatch(signinRequest(username, password, passwordConfirm));
+  }
+
+  useEffect(() => {
+    auth.authenticated && history.replace("/chat");
+  }, [auth.authenticated]);
 
   return (
     <Container maxWidth="xs" className={classes.container}>
@@ -17,7 +35,7 @@ export default function Signup() {
         <Box>
           <Logo />
         </Box>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={_handleSignin}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -28,6 +46,7 @@ export default function Signup() {
             name="username"
             autoComplete="username"
             autoFocus
+            onChange={e => setUsername(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -38,7 +57,7 @@ export default function Signup() {
             label="Senha"
             type="password"
             id="password"
-            autoComplete="current-password"
+            onChange={e => setPassword(e.target.value)}
           />
 
           <TextField
@@ -46,11 +65,20 @@ export default function Signup() {
             margin="normal"
             required
             fullWidth
-            name="confirm-password"
+            name="password-confirm"
             label="Confirme a senha"
             type="password"
-            id="confirm-password"
+            id="password-confirm"
+            onChange={e => setPasswordConfirm(e.target.value)}
           />
+
+          {auth.error && (
+            <Box mt={2}>
+              <Typography variant="body2" color="error">
+                {auth.error}
+              </Typography>
+            </Box>
+          )}
 
           <Box mt={3} mb={3}>
             <Button
@@ -59,6 +87,7 @@ export default function Signup() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              disabled={auth.loading}
             >
               Cadastrar
             </Button>
@@ -66,7 +95,7 @@ export default function Signup() {
 
           <Link to="/cadastrar">
             <Typography variant="body2" color="primary">
-              {"Não tem conta? Faça um cadastro"}
+              {"Já tem conta? Faça login"}
             </Typography>
           </Link>
         </form>
