@@ -93,7 +93,7 @@ export default function Signin() {
             </Button>
           </Box>
 
-          <Link to="/cadastrar">
+          <Link to="/">
             <Typography variant="body2" color="primary">
               {"Já tem conta? Faça login"}
             </Typography>
