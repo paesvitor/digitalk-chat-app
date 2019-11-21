@@ -5,6 +5,7 @@ import Router from "./router";
 import "./resources/styles/global.css";
 import { MuiThemeProvider } from "@material-ui/core";
 import theme from "./resources/styles/theme";
+import { hot } from "react-hot-loader";
 
 function App() {
   return (
@@ -16,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+export default hot(module)(App);
