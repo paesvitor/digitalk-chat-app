@@ -5,7 +5,7 @@ let baseURL;
 if (process.env.REACT_APP_ENV === "development") {
   baseURL = "http://localhost:3000";
 } else {
-  baseURL = "http://localhost:3000";
+  baseURL = "https://digitalk-api.herokuapp.com";
 }
 
 const instance = axios.create({

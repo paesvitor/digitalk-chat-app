@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Box, Typography } from "@material-ui/core";
 import { useStyles } from "./styles";
 import { useSelector } from "react-redux";
+import moment from "moment";
 
 function Message({ message }) {
   const userId = useSelector(state => state.auth.user._id);
@@ -11,9 +12,15 @@ function Message({ message }) {
 
   return (
     <Box className={classes.root}>
-      <Typography variant="caption">{message.user.username}</Typography>
+      <Box className={classes.message}>
+        <Typography variant="caption">{message.user.username}</Typography>
 
-      <Typography>{message.text}</Typography>
+        <Typography>{message.text}</Typography>
+      </Box>
+
+      <Typography variant="caption" className={classes.date}>
+        {moment(message.createdAt).format("LT")}
+      </Typography>
     </Box>
   );
 }

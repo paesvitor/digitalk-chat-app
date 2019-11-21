@@ -9,7 +9,7 @@ export const useStyles = makeStyles(theme => ({
 
   messages: {
     padding: theme.spacing(3),
-
+    flex: 1,
     display: "flex",
     flexDirection: "column",
     overflowY: "scroll"

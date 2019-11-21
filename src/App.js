@@ -6,6 +6,7 @@ import "./resources/styles/global.css";
 import { MuiThemeProvider } from "@material-ui/core";
 import theme from "./resources/styles/theme";
 import { hot } from "react-hot-loader";
+import "moment/locale/pt-br.js";
 
 function App() {
   return (
