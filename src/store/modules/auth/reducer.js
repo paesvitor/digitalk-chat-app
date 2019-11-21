@@ -4,7 +4,7 @@ const initialState = {
   loading: false,
   authenticated: false,
   user: {},
-  error: false
+  error: null
 };
 
 export default (state = initialState, action) => {
@@ -19,7 +19,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
-        loading: false
+        loading: false,
+        error: null
       };
     }
 
