@@ -41,6 +41,17 @@ export default function Signup() {
             autoComplete="current-password"
           />
 
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="confirm-password"
+            label="Confirme a senha"
+            type="password"
+            id="confirm-password"
+          />
+
           <Box mt={3} mb={3}>
             <Button
               type="submit"
@@ -49,13 +60,13 @@ export default function Signup() {
               color="primary"
               className={classes.submit}
             >
-              Entrar
+              Cadastrar
             </Button>
           </Box>
 
-          <Link to="/cadastrar">
+          <Link to="/">
             <LinkButton href="/" variant="body2">
-              {"Não tem conta? Faça um cadastro"}
+              {"Já tem conta? Faça Login"}
             </LinkButton>
           </Link>
         </form>
