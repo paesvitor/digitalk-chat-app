@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import Logo from "../../components/Logo";
+import Logo from "../../components/common/Logo";
 import useStyles from "./styles";
 import { signinRequest } from "../../store/modules/auth/actions";
 import { useDispatch, useSelector } from "react-redux";

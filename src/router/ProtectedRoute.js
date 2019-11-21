@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Authenticated from "../templates/authenticated";
 
 function ProtectedRoute(props) {
   const { component: Component, ...rest } = props;
@@ -12,7 +13,9 @@ function ProtectedRoute(props) {
       {...rest}
       render={props => {
         return auth.authenticated ? (
-          <Component {...props} />
+          <Authenticated>
+            <Component {...props} />
+          </Authenticated>
         ) : (
           <Redirect to={{ pathname: "/" }} />
         );
