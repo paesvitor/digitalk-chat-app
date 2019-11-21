@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   chatStoreRequest,
-  chatIndexRequest
+  chatIndexRequest,
+  chatStoreSuccess
 } from "../../store/modules/chat/actions";
 import { Box } from "@material-ui/core";
+import socket from "../../utils/socket";
 
 function Chat() {
   const chat = useSelector(state => state.chat);
@@ -13,6 +15,8 @@ function Chat() {
 
   useEffect(() => {
     dispatch(chatIndexRequest());
+
+    socket.on("message", message => dispatch(chatStoreSuccess(message)));
   }, [dispatch]);
 
   function _handleSubmit(e) {

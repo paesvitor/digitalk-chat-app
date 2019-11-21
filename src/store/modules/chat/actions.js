@@ -12,3 +12,10 @@ export function chatStoreRequest(text) {
     text
   };
 }
+
+export function chatStoreSuccess(payload) {
+  return {
+    type: TYPES.store.SUCCESS,
+    payload
+  };
+}
