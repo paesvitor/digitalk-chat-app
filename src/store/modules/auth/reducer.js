@@ -3,7 +3,8 @@ import * as TYPES from "./types";
 const initialState = {
   loading: true,
   payload: {},
-  error: false
+  error: false,
+  authenticated: false
 };
 
 export default (state = initialState, action) => {
