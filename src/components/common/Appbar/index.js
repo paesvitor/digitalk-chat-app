@@ -7,7 +7,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { useDispatch } from "react-redux";
-import { authSignoutRequest } from "../../../store/modules/auth/actions";
+import { authSignoutRequest } from "store/modules/auth/actions";
 
 export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = useState(null);

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Authenticated from "../templates/authenticated";
+import Authenticated from "templates/authenticated";
 
 function ProtectedRoute(props) {
   const { component: Component, ...rest } = props;

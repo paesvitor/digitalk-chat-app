@@ -1,5 +1,5 @@
 import React from "react";
-import logoImage from "../../../resources/images/logo.png";
+import logoImage from "resources/images/logo.png";
 import useStyles from "./styles";
 
 function Logo({ width }) {

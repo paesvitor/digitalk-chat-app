@@ -1,5 +1,5 @@
 import React from "react";
-import Appbar from "../../components/common/Appbar";
+import Appbar from "components/common/Appbar";
 import { useStyles } from "./styles";
 import { Box } from "@material-ui/core";
 

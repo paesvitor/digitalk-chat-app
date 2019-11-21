@@ -1,6 +1,6 @@
 import * as TYPES from "./types";
 import { call, takeLeading, put, select } from "redux-saga/effects";
-import http from "../../../utils/http";
+import http from "utils/http";
 
 function* chatIndexSaga() {
   try {

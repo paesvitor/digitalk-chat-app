@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   chatStoreRequest,
   chatIndexRequest,
   chatStoreSuccess
-} from "../../store/modules/chat/actions";
+} from "store/modules/chat/actions";
 import { Box } from "@material-ui/core";
-import socket from "../../utils/socket";
+import socket from "utils/socket";
 
 function Chat() {
   const chat = useSelector(state => state.chat);
