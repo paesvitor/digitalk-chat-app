@@ -85,7 +85,7 @@ export default function Signin() {
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
+              color="secondary"
               className={classes.submit}
               disabled={auth.loading}
             >

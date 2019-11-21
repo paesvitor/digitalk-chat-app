@@ -2,13 +2,8 @@ import * as TYPES from "./types";
 
 const initialState = {
   loading: false,
-  authenticated: true,
-  user: {
-    _id: "5dd629e629ab21006d1c675e",
-    username: "vitor",
-    password: "123",
-    __v: 0
-  },
+  authenticated: false,
+  user: {},
   error: false
 };
 

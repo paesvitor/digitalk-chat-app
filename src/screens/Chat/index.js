@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   chatStoreRequest,
@@ -10,14 +10,13 @@ import socket from "../../utils/socket";
 
 function Chat() {
   const chat = useSelector(state => state.chat);
+  const userId = useSelector(state => state.auth.user._id);
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(chatIndexRequest());
-
-    socket.on("message", message => dispatch(chatStoreSuccess(message)));
-  }, [dispatch]);
+  function _handleMessage(message) {
+    message.user._id !== userId && dispatch(chatStoreSuccess(message));
+  }
 
   function _handleSubmit(e) {
     e.preventDefault();
@@ -25,11 +24,22 @@ function Chat() {
     setMessage("");
   }
 
+  useMemo(() => {
+    dispatch(chatIndexRequest());
+
+    socket.on("message", _handleMessage);
+  }, [dispatch]);
+
   return (
-    <Box>
-      {chat.payload.map(message => (
-        <div key={message._id}>{message.text}</div>
-      ))}
+    <Box display="flex" flexDirection="column" flex="1">
+      <Box style={{ flex: 1, overflowY: "scroll" }}>
+        {chat.payload.map(message => (
+          <div key={message._id}>
+            <div>{message.text}</div>
+            <div>{message.user.username}</div>
+          </div>
+        ))}
+      </Box>
 
       <form onSubmit={_handleSubmit}>
         <input

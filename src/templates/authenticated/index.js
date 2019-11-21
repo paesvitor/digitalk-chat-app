@@ -9,7 +9,13 @@ function AuthenticatedTempalte(props) {
   return (
     <section className={classes.root}>
       <Appbar />
-      <Box flex="1" height="1" overflow="hidden">
+      <Box
+        display="flex"
+        flexDirection="column"
+        flex="1"
+        height="1"
+        overflow="hidden"
+      >
         {props.children}
       </Box>
     </section>
